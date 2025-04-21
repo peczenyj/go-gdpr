@@ -118,6 +118,7 @@ func (l parsedVendor) Purpose(purposeID consentconstants.Purpose) (hasPurpose bo
 // PurposeStrict checks only for the primary purpose, no considering flex purposes.
 func (l parsedVendor) PurposeStrict(purposeID consentconstants.Purpose) (hasPurpose bool) {
 	_, hasPurpose = l.purposes[purposeID]
+
 	return
 }
 
@@ -137,18 +138,21 @@ func (l parsedVendor) LegitimateInterest(purposeID consentconstants.Purpose) (ha
 // LegitimateInterestStrict checks only for the primary legitimate, no considering flex purposes.
 func (l parsedVendor) LegitimateInterestStrict(purposeID consentconstants.Purpose) (hasLegitimateInterest bool) {
 	_, hasLegitimateInterest = l.legitimateInterests[purposeID]
+
 	return
 }
 
 // SpecialPurpose returns true if this vendor claims a need for the given special purpose
 func (l parsedVendor) SpecialPurpose(purposeID consentconstants.Purpose) (hasSpecialPurpose bool) {
 	_, hasSpecialPurpose = l.specialPurposes[purposeID]
+
 	return
 }
 
 // SpecialFeature returns true if this vendor claims a need for the given special feature
 func (l parsedVendor) SpecialFeature(featureID consentconstants.SpecialFeature) (hasSpecialFeature bool) {
 	_, hasSpecialFeature = l.specialFeatures[featureID]
+
 	return
 }
 

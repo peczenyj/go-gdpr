@@ -95,11 +95,13 @@ type parsedVendor struct {
 
 func (l parsedVendor) Purpose(purposeID consentconstants.Purpose) (hasPurpose bool) {
 	_, hasPurpose = l.purposeIDs[purposeID]
+
 	return
 }
 
 func (l parsedVendor) PurposeStrict(purposeID consentconstants.Purpose) (hasPurpose bool) {
 	_, hasPurpose = l.purposeIDs[purposeID]
+
 	return
 }
 
@@ -109,11 +111,13 @@ func (l parsedVendor) PurposeStrict(purposeID consentconstants.Purpose) (hasPurp
 // For an explanation of legitimate interest, see https://www.gdpreu.org/the-regulation/key-concepts/legitimate-interest/
 func (l parsedVendor) LegitimateInterest(purposeID consentconstants.Purpose) (hasLegitimateInterest bool) {
 	_, hasLegitimateInterest = l.legitimateInterestIDs[purposeID]
+
 	return
 }
 
 func (l parsedVendor) LegitimateInterestStrict(purposeID consentconstants.Purpose) (hasLegitimateInterest bool) {
 	_, hasLegitimateInterest = l.legitimateInterestIDs[purposeID]
+
 	return
 }
 

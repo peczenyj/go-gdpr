@@ -30,6 +30,7 @@ func parseMetadata(data []byte) (ConsentMetadata, error) {
 
 	if metadata.VendorListVersion() == 0 {
 		metadata.data = nil
+
 		return metadata, errInvalidVendorListVersion
 	}
 
