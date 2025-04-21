@@ -67,11 +67,11 @@ func BenchmarkParse(b *testing.B) {
 		all = append(all, c.consent)
 	}
 	b.Run("all testcases", func(b *testing.B) {
-    // on https://dave.cheney.net/2013/06/30/how-to-write-benchmarks-in-go
-    // section "A note on compiler optimisations"
-    // we have a warning about the compiler may eliminate
-    // ParseString function call, to prevent this we assign the result to
-    // some variables out of the for loop scope
+		// on https://dave.cheney.net/2013/06/30/how-to-write-benchmarks-in-go
+		// section "A note on compiler optimisations"
+		// we have a warning about the compiler may eliminate
+		// ParseString function call, to prevent this we assign the result to
+		// some variables out of the for loop scope
 		var consent api.VendorConsents
 		var err error
 		max := len(all)
@@ -101,6 +101,7 @@ var consentFile string
 func init() {
 	flag.StringVar(&consentFile, "consent-file", "", "ascii consent file")
 }
+
 func BenchmarkVerify(b *testing.B) {
 	if consentFile == "" {
 		b.SkipNow()
@@ -120,11 +121,11 @@ func BenchmarkVerify(b *testing.B) {
 
 	max := len(consents)
 	b.Run(fmt.Sprintf("testing just parsing %d consents/string", max), func(b *testing.B) {
-    // on https://dave.cheney.net/2013/06/30/how-to-write-benchmarks-in-go
-    // section "A note on compiler optimisations"
-    // we have a warning about the compiler may eliminate
-    // ParseString function call, to prevent this we assign the result to
-    // some variables out of the for loop scope
+		// on https://dave.cheney.net/2013/06/30/how-to-write-benchmarks-in-go
+		// section "A note on compiler optimisations"
+		// we have a warning about the compiler may eliminate
+		// ParseString function call, to prevent this we assign the result to
+		// some variables out of the for loop scope
 		var consent api.VendorConsents
 		var err error
 		for n := 0; n < b.N; n++ {

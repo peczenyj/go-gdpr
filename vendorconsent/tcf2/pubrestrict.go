@@ -69,5 +69,4 @@ func (p *pubRestrictions) CheckPubRestriction(purposeID uint8, restrictType uint
 		}
 	}
 	return false
-
 }

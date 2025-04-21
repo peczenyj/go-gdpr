@@ -90,7 +90,6 @@ func Parse(data []byte) (api.VendorConsents, error) {
 	metadata.publisherRestrictions = pubRestrictions
 
 	return metadata, err
-
 }
 
 // IsConsentV2 return true if the consent strings looks like a tcf v2 consent string
