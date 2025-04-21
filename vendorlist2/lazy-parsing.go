@@ -4,6 +4,7 @@ import (
 	"strconv"
 
 	"github.com/buger/jsonparser"
+
 	"github.com/prebid/go-gdpr/api"
 	"github.com/prebid/go-gdpr/consentconstants"
 )
