@@ -165,8 +165,5 @@ func isSet(data []byte, bitIndex uint) bool {
 
 // byteToBool returns false if val is 0, and true otherwise
 func byteToBool(val byte) bool {
-	if val == 0 {
-		return false
-	}
-	return true
+	return val != 0
 }
