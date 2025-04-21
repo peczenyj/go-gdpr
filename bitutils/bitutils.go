@@ -37,7 +37,7 @@ func ParseByte8(data []byte, bitStartIndex uint) (byte, error) {
 		return data[startByte], nil
 	}
 	if uint(len(data)) < (startByte + 2) {
-		return 0, fmt.Errorf("ParseByte8 expected 8 bitst to start at bit %d, but the consent string was only %d bytes long", bitStartIndex, len(data))
+		return 0, fmt.Errorf("ParseByte8 expected 8 bits to start at bit %d, but the consent string was only %d bytes long", bitStartIndex, len(data))
 	}
 
 	leftBits := (data[startByte] & (0xff >> bitStartOffset)) << bitStartOffset
