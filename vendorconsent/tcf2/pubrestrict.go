@@ -57,7 +57,7 @@ type pubRestriction struct {
 	vendors      []rangeConsent
 }
 
-func (p *pubRestrictions) CheckPubRestriction(purposeID uint8, restrictType uint8, vendor uint16) bool {
+func (p *pubRestrictions) CheckPubRestriction(purposeID, restrictType uint8, vendor uint16) bool {
 	key := byte(purposeID<<2 | (restrictType & 0x03))
 	restriction, ok := p.restrictions[key]
 	if !ok {

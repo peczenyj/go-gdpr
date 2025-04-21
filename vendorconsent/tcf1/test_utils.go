@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func assertInvalid(t *testing.T, urlEncodedString string, expectError string) {
+func assertInvalid(t *testing.T, urlEncodedString, expectError string) {
 	t.Helper()
 	data, err := base64.RawURLEncoding.DecodeString(urlEncodedString)
 	assertNilError(t, err)
@@ -33,35 +33,35 @@ func assertNilError(t *testing.T, err error) {
 	}
 }
 
-func assertStringsEqual(t *testing.T, expected string, actual string) {
+func assertStringsEqual(t *testing.T, expected, actual string) {
 	t.Helper()
 	if actual != expected {
 		t.Errorf("Strings were not equal. Expected %s, actual %s", expected, actual)
 	}
 }
 
-func assertUInt8sEqual(t *testing.T, expected uint8, actual uint8) {
+func assertUInt8sEqual(t *testing.T, expected, actual uint8) {
 	t.Helper()
 	if actual != expected {
 		t.Errorf("Ints were not equal. Expected %d, actual %d", expected, actual)
 	}
 }
 
-func assertUInt16sEqual(t *testing.T, expected uint16, actual uint16) {
+func assertUInt16sEqual(t *testing.T, expected, actual uint16) {
 	t.Helper()
 	if actual != expected {
 		t.Errorf("Ints were not equal. Expected %d, actual %d", expected, actual)
 	}
 }
 
-func assertIntsEqual(t *testing.T, expected int, actual int) {
+func assertIntsEqual(t *testing.T, expected, actual int) {
 	t.Helper()
 	if actual != expected {
 		t.Errorf("Ints were not equal. Expected %d, actual %d", expected, actual)
 	}
 }
 
-func assertBoolsEqual(t *testing.T, expected bool, actual bool) {
+func assertBoolsEqual(t *testing.T, expected, actual bool) {
 	t.Helper()
 	if actual != expected {
 		t.Errorf("Bools were not equal. Expected %t, actual %t", expected, actual)

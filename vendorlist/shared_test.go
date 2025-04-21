@@ -57,14 +57,14 @@ const testData = `
 }
 `
 
-func assertIntsEqual(t *testing.T, expected int, actual int) {
+func assertIntsEqual(t *testing.T, expected, actual int) {
 	t.Helper()
 	if actual != expected {
 		t.Errorf("Ints were not equal. Expected %d, actual %d", expected, actual)
 	}
 }
 
-func assertBoolsEqual(t *testing.T, expected bool, actual bool) {
+func assertBoolsEqual(t *testing.T, expected, actual bool) {
 	t.Helper()
 	if actual != expected {
 		t.Errorf("Bools were not equal. Expected %t, actual %t", expected, actual)

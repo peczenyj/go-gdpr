@@ -90,7 +90,7 @@ func TestParseEmptyString(t *testing.T) {
 	}
 }
 
-func assertInvalid20(t *testing.T, urlEncodedString string, expectError string) {
+func assertInvalid20(t *testing.T, urlEncodedString, expectError string) {
 	t.Helper()
 	data, err := base64.RawURLEncoding.DecodeString(urlEncodedString)
 	assertNilError(t, err)

@@ -51,7 +51,7 @@ type vendorConsentsResolver interface {
 }
 
 type pubRestrictResolver interface {
-	CheckPubRestriction(purposeID uint8, restrictType uint8, vendor uint16) bool
+	CheckPubRestriction(purposeID, restrictType uint8, vendor uint16) bool
 }
 
 // Version returns the version stored in the first 6 bits
@@ -199,7 +199,7 @@ func (c ConsentMetadata) VendorLegitInterest(id uint16) bool {
 }
 
 // CheckPubRestriction returns the publisher restriction for a given purpose id, restriction type and vendor id
-func (c ConsentMetadata) CheckPubRestriction(purposeID uint8, restrictType uint8, vendor uint16) bool {
+func (c ConsentMetadata) CheckPubRestriction(purposeID, restrictType uint8, vendor uint16) bool {
 	return c.publisherRestrictions.CheckPubRestriction(purposeID, restrictType, vendor)
 }
 
