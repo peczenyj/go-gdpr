@@ -27,6 +27,7 @@ func (l lazyVendorList) SpecVersion() uint16 {
 	if val, ok := lazyParseInt(l, "gvlSpecificationVersion"); ok {
 		return uint16(val)
 	}
+
 	return 0
 }
 
@@ -34,6 +35,7 @@ func (l lazyVendorList) Version() uint16 {
 	if val, ok := lazyParseInt(l, "vendorListVersion"); ok {
 		return uint16(val)
 	}
+
 	return 0
 }
 
@@ -42,6 +44,7 @@ func (l lazyVendorList) Vendor(vendorID uint16) api.Vendor {
 	if err == nil && len(vendorBytes) > 0 {
 		return lazyVendor(vendorBytes)
 	}
+
 	return nil
 }
 
@@ -52,6 +55,7 @@ func (l lazyVendor) Purpose(purposeID consentconstants.Purpose) bool {
 	if exists {
 		return true
 	}
+
 	return idExists(l, int(purposeID), "flexiblePurposes")
 }
 
@@ -65,6 +69,7 @@ func (l lazyVendor) LegitimateInterest(purposeID consentconstants.Purpose) bool 
 	if exists {
 		return true
 	}
+
 	return idExists(l, int(purposeID), "flexiblePurposes")
 }
 
@@ -106,7 +111,9 @@ func lazyParseInt(data []byte, key string) (int, bool) {
 		if err != nil {
 			return 0, false
 		}
+
 		return intVal, true
 	}
+
 	return 0, false
 }

@@ -122,6 +122,7 @@ func assertNilError(t *testing.T, err error) {
 
 func assertStringsEqual(t *testing.T, expected, actual string) {
 	t.Helper()
+
 	if actual != expected {
 		t.Errorf("Strings were not equal. Expected %s, actual %s", expected, actual)
 	}
@@ -129,6 +130,7 @@ func assertStringsEqual(t *testing.T, expected, actual string) {
 
 func assertBytesEqual(t *testing.T, expected, actual byte) {
 	t.Helper()
+
 	if actual != expected {
 		t.Errorf("bytes were not equal. Expected %d, actual %d", expected, actual)
 	}
@@ -136,6 +138,7 @@ func assertBytesEqual(t *testing.T, expected, actual byte) {
 
 func assertUInt8sEqual(t *testing.T, expected, actual uint8) {
 	t.Helper()
+
 	if actual != expected {
 		t.Errorf("Ints were not equal. Expected %d, actual %d", expected, actual)
 	}
@@ -143,6 +146,7 @@ func assertUInt8sEqual(t *testing.T, expected, actual uint8) {
 
 func assertUInt16sEqual(t *testing.T, expected, actual uint16) {
 	t.Helper()
+
 	if actual != expected {
 		t.Errorf("Ints were not equal. Expected %d, actual %d", expected, actual)
 	}
@@ -150,6 +154,7 @@ func assertUInt16sEqual(t *testing.T, expected, actual uint16) {
 
 func assertIntsEqual(t *testing.T, expected, actual int) {
 	t.Helper()
+
 	if actual != expected {
 		t.Errorf("Ints were not equal. Expected %d, actual %d", expected, actual)
 	}
@@ -157,6 +162,7 @@ func assertIntsEqual(t *testing.T, expected, actual int) {
 
 func assertBoolsEqual(t *testing.T, expected, actual bool) {
 	t.Helper()
+
 	if actual != expected {
 		t.Errorf("Bools were not equal. Expected %t, actual %t", expected, actual)
 	}

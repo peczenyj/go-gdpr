@@ -188,6 +188,7 @@ const testDataSpecVersion3Empty = `
 
 func assertIntsEqual(t *testing.T, expected, actual int) {
 	t.Helper()
+
 	if actual != expected {
 		t.Errorf("Ints were not equal. Expected %d, actual %d", expected, actual)
 	}
@@ -195,6 +196,7 @@ func assertIntsEqual(t *testing.T, expected, actual int) {
 
 func assertBoolsEqual(t *testing.T, expected, actual bool) {
 	t.Helper()
+
 	if actual != expected {
 		t.Errorf("Bools were not equal. Expected %t, actual %t", expected, actual)
 	}
@@ -202,9 +204,11 @@ func assertBoolsEqual(t *testing.T, expected, actual bool) {
 
 func assertNil(t *testing.T, value api.Vendor, expectNil bool) {
 	t.Helper()
+
 	if expectNil && value != nil {
 		t.Error("The vendor should be nil, but wasn't.")
 	}
+
 	if !expectNil && value == nil {
 		t.Errorf("The vendor should not be nil, but was.")
 	}

@@ -27,6 +27,7 @@ func (l lazyVendorList) SpecVersion() uint16 {
 	if val, ok := lazyParseInt(l, "gvlSpecificationVersion"); ok {
 		return uint16(val)
 	}
+
 	return 0
 }
 
@@ -34,11 +35,13 @@ func (l lazyVendorList) Version() uint16 {
 	if val, ok := lazyParseInt(l, "vendorListVersion"); ok {
 		return uint16(val)
 	}
+
 	return 0
 }
 
 func (l lazyVendorList) Vendor(vendorID uint16) api.Vendor {
 	var vendorBytes []byte
+
 	jsonparser.ArrayEach(l, func(value []byte, dataType jsonparser.ValueType, offset int, err error) {
 		if val, ok := lazyParseInt(value, "id"); ok {
 			if uint16(val) == vendorID {
@@ -50,6 +53,7 @@ func (l lazyVendorList) Vendor(vendorID uint16) api.Vendor {
 	if len(vendorBytes) > 0 {
 		return lazyVendor(vendorBytes)
 	}
+
 	return nil
 }
 
@@ -104,7 +108,9 @@ func lazyParseInt(data []byte, key string) (int, bool) {
 		if err != nil {
 			return 0, false
 		}
+
 		return intVal, true
 	}
+
 	return 0, false
 }

@@ -8,6 +8,7 @@ import (
 func TestCreatedDate(t *testing.T) {
 	consent, err := Parse(decode(t, "COvcSpYOvcSpYC9AAAENAPCAAAAAAAAAAAAACvwDQABAAIAAYABIAC4AJQAagA9ACEAPgAjIBJoCvAK-AAAAAA"))
 	assertNilError(t, err)
+
 	created := consent.Created().UTC()
 	year, month, day := created.Date()
 	assertIntsEqual(t, 2020, year)
@@ -21,6 +22,7 @@ func TestCreatedDate(t *testing.T) {
 func TestLastUpdate(t *testing.T) {
 	consent, err := Parse(decode(t, "COvcSpYOvcSpYC9AAAENAPCAAAAAAAAAAAAACvwDQABAAIAAYABIAC4AJQAagA9ACEAPgAjIBJoCvAK-AAAAAA"))
 	assertNilError(t, err)
+
 	updated := consent.LastUpdated().UTC()
 	year, month, day := updated.Date()
 	assertIntsEqual(t, 2020, year)
@@ -62,6 +64,7 @@ func TestLanguageExtremes(t *testing.T) {
 func TestTCFPolicyVersion(t *testing.T) {
 	baseConsent := "CPtGDMAPtGDMALMAAAENA_C_AAAAAAAAACiQAAAAAAAA"
 	index := 22 // policy version is at the 23rd 6-bit base64 position
+
 	tests := []struct {
 		name       string
 		base64Char string
@@ -121,6 +124,7 @@ func TestTCFPolicyVersion(t *testing.T) {
 func TestTCF2Fields(t *testing.T) {
 	baseConsent, err := Parse(decode(t, "COx3XOeOx3XOeLkAAAENAfCIAAAAAHgAAIAAAAAAAAAA"))
 	assertNilError(t, err)
+
 	consent := baseConsent.(ConsentMetadata)
 
 	assertBoolsEqual(t, true, consent.PurposeOneTreatment())
@@ -131,6 +135,7 @@ func TestTCF2Fields(t *testing.T) {
 func TestLITransparency(t *testing.T) {
 	baseConsent, err := Parse(decode(t, "COx3XOeOx3XOeLkAAAENAfCIAAAAAHgAAIAAAAAAAAAA"))
 	assertNilError(t, err)
+
 	consent := baseConsent.(ConsentMetadata)
 
 	assertBoolsEqual(t, false, consent.PurposeLITransparency(1))

@@ -53,19 +53,25 @@ func parseVendor(contract vendorListVendorContract) parsedVendor {
 
 func mapifyPurpose(input []uint8) map[consentconstants.Purpose]struct{} {
 	m := make(map[consentconstants.Purpose]struct{}, len(input))
+
 	var s struct{}
+
 	for _, value := range input {
 		m[consentconstants.Purpose(value)] = s
 	}
+
 	return m
 }
 
 func mapifySpecialFeature(input []uint8) map[consentconstants.SpecialFeature]struct{} {
 	m := make(map[consentconstants.SpecialFeature]struct{}, len(input))
+
 	var s struct{}
+
 	for _, value := range input {
 		m[consentconstants.SpecialFeature(value)] = s
 	}
+
 	return m
 }
 
@@ -88,6 +94,7 @@ func (l parsedVendorList) Vendor(vendorID uint16) api.Vendor {
 	if ok {
 		return vendor
 	}
+
 	return nil
 }
 
@@ -104,6 +111,7 @@ func (l parsedVendor) Purpose(purposeID consentconstants.Purpose) (hasPurpose bo
 	if !hasPurpose {
 		_, hasPurpose = l.flexiblePurposes[purposeID]
 	}
+
 	return
 }
 
@@ -122,6 +130,7 @@ func (l parsedVendor) LegitimateInterest(purposeID consentconstants.Purpose) (ha
 	if !hasLegitimateInterest {
 		_, hasLegitimateInterest = l.flexiblePurposes[purposeID]
 	}
+
 	return
 }
 

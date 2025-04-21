@@ -66,6 +66,7 @@ func BenchmarkParse(b *testing.B) {
 	for _, c := range testcases {
 		all = append(all, c.consent)
 	}
+
 	b.Run("all testcases", func(b *testing.B) {
 		// on https://dave.cheney.net/2013/06/30/how-to-write-benchmarks-in-go
 		// section "A note on compiler optimisations"
@@ -73,11 +74,14 @@ func BenchmarkParse(b *testing.B) {
 		// ParseString function call, to prevent this we assign the result to
 		// some variables out of the for loop scope
 		var consent api.VendorConsents
+
 		var err error
+
 		max := len(all)
 		for n := 0; n < b.N; n++ {
 			consent, err = vendorconsent.ParseString(all[n%max])
 		}
+
 		_ = consent
 		_ = err
 	})
@@ -86,10 +90,12 @@ func BenchmarkParse(b *testing.B) {
 		tc := tc
 		b.Run("case "+tc.label, func(b *testing.B) {
 			var consent api.VendorConsents
+
 			var err error
 			for n := 0; n < b.N; n++ {
 				consent, err = vendorconsent.ParseString(tc.consent)
 			}
+
 			_ = consent
 			_ = err
 		})
@@ -106,13 +112,16 @@ func BenchmarkVerify(b *testing.B) {
 	if consentFile == "" {
 		b.SkipNow()
 	}
+
 	readFile, err := os.Open(consentFile)
 	if err != nil {
 		b.FailNow() // abort
 	}
+
 	defer readFile.Close()
 	fileScanner := bufio.NewScanner(readFile)
 	fileScanner.Split(bufio.ScanLines)
+
 	var consents []string
 
 	for fileScanner.Scan() {
@@ -127,10 +136,12 @@ func BenchmarkVerify(b *testing.B) {
 		// ParseString function call, to prevent this we assign the result to
 		// some variables out of the for loop scope
 		var consent api.VendorConsents
+
 		var err error
 		for n := 0; n < b.N; n++ {
 			consent, err = vendorconsent.ParseString(consents[n%max])
 		}
+
 		_ = consent
 		_ = err
 	})

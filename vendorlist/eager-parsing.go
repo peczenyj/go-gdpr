@@ -25,6 +25,7 @@ func ParseEagerly(data []byte) (api.VendorList, error) {
 	if contract.Version == 0 {
 		return nil, errors.New("data.vendorListVersion was 0 or undefined. Versions should start at 1")
 	}
+
 	if len(contract.Vendors) == 0 {
 		return nil, errors.New("data.vendors was undefined or had no elements")
 	}
@@ -54,10 +55,13 @@ func parseVendor(contract vendorListVendorContract) parsedVendor {
 
 func mapify(input []uint8) map[consentconstants.Purpose]struct{} {
 	m := make(map[consentconstants.Purpose]struct{}, len(input))
+
 	var s struct{}
+
 	for _, value := range input {
 		m[consentconstants.Purpose(value)] = s
 	}
+
 	return m
 }
 
@@ -80,6 +84,7 @@ func (l parsedVendorList) Vendor(vendorID uint16) api.Vendor {
 	if ok {
 		return vendor
 	}
+
 	return nil
 }
 
