@@ -84,7 +84,7 @@ func BenchmarkParse(b *testing.B) {
 
 	for _, tc := range testcases {
 		tc := tc
-		b.Run(fmt.Sprintf("case %s", tc.label), func(b *testing.B) {
+		b.Run("case "+tc.label, func(b *testing.B) {
 			var consent api.VendorConsents
 			var err error
 			for n := 0; n < b.N; n++ {
