@@ -19,7 +19,7 @@ func parseBitField(data consentMetadata) (*consentBitField, error) {
 
 	otherBytesRequired := (vendorBitsRequired - 3) / 8
 	if (vendorBitsRequired-3)%8 > 0 {
-		otherBytesRequired = otherBytesRequired + 1
+		otherBytesRequired++
 	}
 
 	dataLengthRequired := 22 + otherBytesRequired

@@ -29,7 +29,7 @@ func parseRangeSection(metadata ConsentMetadata, maxVendorID uint16, startbit ui
 			return nil, 0, err
 		}
 
-		currentOffset = currentOffset + bitsConsumed
+		currentOffset += bitsConsumed
 	}
 
 	return &rangeSection{

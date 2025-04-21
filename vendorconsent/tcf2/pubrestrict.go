@@ -27,14 +27,14 @@ func parsePubRestriction(metadata ConsentMetadata, startbit uint) (*pubRestricti
 			return nil, 0, fmt.Errorf("Error on parsing the publisher restriction purpose/type: %s", err.Error())
 		}
 
-		currentOffset = currentOffset + 8
+		currentOffset += 8
 
 		numEntries, err := bitutils.ParseUInt12(data, currentOffset)
 		if err != nil {
 			return nil, 0, fmt.Errorf("Error on parsing the number of publisher restriction vendor ranges: %s", err.Error())
 		}
 
-		currentOffset = currentOffset + 12
+		currentOffset += 12
 		vendors := make([]rangeConsent, numEntries)
 
 		for i := range vendors {
@@ -43,7 +43,7 @@ func parsePubRestriction(metadata ConsentMetadata, startbit uint) (*pubRestricti
 				return nil, 0, err
 			}
 
-			currentOffset = currentOffset + bitsConsumed
+			currentOffset += bitsConsumed
 		}
 
 		restrictions[restrictData] = pubRestriction{

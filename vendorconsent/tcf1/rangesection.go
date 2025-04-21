@@ -25,7 +25,7 @@ func parseRangeSection(data consentMetadata) (*rangeSection, error) {
 			return nil, err
 		}
 
-		currentOffset = currentOffset + bitsConsumed
+		currentOffset += bitsConsumed
 	}
 
 	return &rangeSection{
@@ -119,7 +119,7 @@ func parseUInt16(data []byte, bitStartIndex uint) (uint16, error) {
 
 	// Take the rightmost bits of the left byte, and the leftmost bits of the middle byte
 	leftByte := (data[startByte] & (0xff >> bitStartOffset)) << bitStartOffset
-	leftByte = leftByte | (data[startByte+1] >> shiftComplement)
+	leftByte |= (data[startByte+1] >> shiftComplement)
 
 	// Take the rightmost bits of the middle byte, and the leftmost bits of the right byte
 	rightByte := data[startByte+2] & (0xff << shiftComplement)
